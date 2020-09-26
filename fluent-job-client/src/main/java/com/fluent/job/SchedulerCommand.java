@@ -14,33 +14,36 @@ public class SchedulerCommand extends Command {
     private String executerId;
     private CommandParam commandParam;
 
-    public SchedulerCommand(CommandType commandType, String executerId, CommandParam commandParam) {
-        if (!commandType.checkParam(commandParam)) {
-            throw new IllegalArgumentException(String.format("CommandParam require %s", commandType.getClass().getName()));
+    public SchedulerCommand(CommandType commandType,String executerId,CommandParam commandParam){
+        if (!commandType.checkParam(commandParam)){
+            throw new IllegalArgumentException(String.format("CommandParam require %s",commandType.getClass().getName()));
         }
-        this.commandId = UUID.randomUUID().toString().replace("-", "");
-        this.commandType = commandType;
-        this.executerId = executerId;
-        this.commandParam = commandParam;
+        this.commandId= UUID.randomUUID().toString().replace("-","");
+        this.commandType=commandType;
+        this.executerId=executerId;
+        this.commandParam=commandParam;
+    }
+    public byte[] toMsgBody(){
+        return null;
     }
 
     public enum CommandType {
         /**
          * 执行任务
          */
-        EXECUTE(10, ExecuteParam.class),
+        EXECUTE(10,ExecuteParam.class),
         /**
          * 恢复暂停的任务
          */
-        RESUME(11, ExecuteParam.class),
+        RESUME(11,ExecuteParam.class),
         /**
          * 强制结束任务
          */
-        KILL(20, ExecuteParam.class),
+        KILL(20,ExecuteParam.class),
         /**
          * 暂停正在执行的任务
          */
-        SUSPEND(21, ExecuteParam.class),
+        SUSPEND(21,ExecuteParam.class),
         ;
 
         private final int type;
@@ -50,8 +53,7 @@ public class SchedulerCommand extends Command {
             this.type = type;
             this.cmdClass = cmdClass;
         }
-
-        public boolean checkParam(CommandParam param) {
+        public boolean checkParam(CommandParam param){
             return param != null && param.getClass() == cmdClass;
         }
     }
