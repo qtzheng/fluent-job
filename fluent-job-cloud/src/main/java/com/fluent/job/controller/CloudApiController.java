@@ -1,7 +1,7 @@
 package com.fluent.job.controller;
 
 import com.alibaba.cola.dto.SingleResponse;
-import com.fluent.job.ExecuteParam;
+import com.fluent.job.domain.message.ExecuteParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
