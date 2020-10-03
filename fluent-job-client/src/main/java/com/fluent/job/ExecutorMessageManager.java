@@ -1,6 +1,7 @@
 package com.fluent.job;
 
 import com.alibaba.cola.dto.SingleResponse;
+import com.fluent.job.domain.message.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -11,81 +12,39 @@ import org.springframework.stereotype.Component;
 @Component
 public class ExecutorMessageManager implements MessageDown,MessageUp {
 
-    /**
-     * 执行任务
-     *
-     * @param param 执行参数
-     * @return 结果
-     */
+
     @Override
-    public SingleResponse<String> execute(ExecuteParam param) {
+    public SingleResponse<String> execute(Message<ExecuteBody> message) {
         return null;
     }
 
-    /**
-     * 强制结束任务
-     *
-     * @param param 参数
-     * @return 结果
-     */
     @Override
-    public SingleResponse<String> kill(ExecuteParam param) {
+    public SingleResponse<String> kill(Message<KillBody> message) {
         return null;
     }
 
-    /**
-     * 暂停任务
-     *
-     * @param param 参数
-     * @return 结果
-     */
     @Override
-    public SingleResponse<String> suspend(ExecuteParam param) {
+    public SingleResponse<String> suspend(Message<SuspendBody> message) {
         return null;
     }
 
-    /**
-     * 恢复暂停的任务
-     *
-     * @param param 参数
-     * @return 结果
-     */
     @Override
-    public SingleResponse<String> recovery(ExecuteParam param) {
+    public SingleResponse<String> recovery(Message<RecoveryBody> message) {
         return null;
     }
 
-    /**
-     * 执行器注册（附带心跳检查）。
-     * 每隔30秒向调度器发送注册命令，调度器接收到消息后新增执行器记录或者修改注册时间。
-     *
-     * @param param 执行参数
-     * @return 结果
-     */
     @Override
-    public SingleResponse<String> registry(ExecuteParam param) {
+    public SingleResponse<String> registry(Message<RegistryBody> message) {
         return null;
     }
 
-    /**
-     * 任务结束，回调，返回执行结果。
-     *
-     * @param param 参数
-     * @return 结果
-     */
     @Override
-    public SingleResponse<String> callback(ExecuteParam param) {
+    public SingleResponse<String> callback(Message<RegistryBody> message) {
         return null;
     }
 
-    /**
-     * 执行器下线，移除注册信息。
-     *
-     * @param param 参数
-     * @return 结果
-     */
     @Override
-    public SingleResponse<String> registryRemove(ExecuteParam param) {
+    public SingleResponse<String> registryRemove(Message<RegistryRemoveBody> message) {
         return null;
     }
 }
